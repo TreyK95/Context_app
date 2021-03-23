@@ -1,11 +1,13 @@
 import React from 'react'
 import Account from './Account'
-// import AccountClassForm from './AccountClassForm'
+import ConnectedAccountForm from './AccountForm'
+
+
 const AccountProfile = (props)=>{
     return(
         <>
             <Account />
-            {/* <AccountClassForm /> */}
+            <ConnectedAccountForm/>
         </>
     )
 }

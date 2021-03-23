@@ -4,21 +4,21 @@ import { AccountConsumer, AccountContext} from "../Providers/AccountProvider"
 
 const Account = () => {
   
-  const {UserName, membershipLevel, dateJoined}= useContext(AccountContext)
-  // const Account = useContext(AccountContext);
+  // const {FirstName, LastName, Email}= useContext(AccountContext)
+  const Account = useContext(AccountContext);
 
   // <AccountConsumer>
   //   {value => (
     return (
   <Card>
     <Card.Content>
-      <Card.Header>{UserName}</Card.Header>
-      <Card.Meta>
-        Date Joined: {dateJoined}
-      </Card.Meta>
+      <Card.Header>First Name: {Account.FirstName}</Card.Header>
+      <Card.Header>
+        Last Name: {Account.LastName}
+      </Card.Header>
     </Card.Content>
     <Card.Content>
-      <p>Membership Level: {membershipLevel}</p>
+      <p>Email: {Account.Email}</p>
     </Card.Content>
   </Card>
  )
