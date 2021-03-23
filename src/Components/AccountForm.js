@@ -5,13 +5,14 @@ import { AccountConsumer } from '../Providers/AccountProvider';
 class AccountForm extends React.Component {
   state= {
     UserName: this.props.UserName,
-    membershipLevel: this.props.membershipOptions,
+    membershipLevel: this.props.membershipLevel,
   };
 
-  handleChange = (e, {name, value}) => this.setState({ [name]: value, });
+  handleChange = (e, {name, value}) => this.setState({ [name]: value });
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
+    this.props.updateAccount(account);
   }
 
   render() {
@@ -28,16 +29,22 @@ class AccountForm extends React.Component {
       <Form.Select
         label="Membership Level"
         name="membershipLevel"
-        value="membershipLevel"
+        value={membershipLevel}
         onChange={this.handleChange}
-        options={membershipOptions}
+        options={membershipLevel}
         />
       </Form>
     )
   }
 }
+const membershipOptions = [
+  { key: "b", text: "Bronze", value: "Bronze", },
+  { key: "s", text: "Silver", value: "Silver", },
+  { key: "g", text: "Gold", value: "Gold", },
+  { key: "p", text: "Platinum", value: "Platinum", },
+];
 
-const ConnectedAccountForm = (props)=>{
+const ConnectedAccountForm = props=>{
   return(
     <AccountConsumer>
       { value => (
@@ -45,17 +52,11 @@ const ConnectedAccountForm = (props)=>{
         {...props}
         UserName={value.UserName}
         membershipLevel={value.membershipLevel}
+        updateAccount={value.updateAccount}
         />
       )}
     </AccountConsumer>
   )
 }
-
-const membershipOptions = [
-  { key: "b", text: "Bronze", value: "Bronze", },
-  { key: "s", text: "Silver", value: "Silver", },
-  { key: "g", text: "Gold", value: "Gold", },
-  { key: "p", text: "Platinum", value: "Platinum", },
-];
 
 export default ConnectedAccountForm;

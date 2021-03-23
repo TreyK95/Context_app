@@ -9,7 +9,11 @@ class AccountProvider extends React.Component {
     UserName: "NoobMaster",
     dateJoined: "1/4/16",
     membershipLevel: "Silver",
+    updateAccount: (Account) => this.updateAccount(Account)
   };
+  updateAccount = (Account) => {
+    this.setState({...Account,})
+  }
 
   render(){
     return(
